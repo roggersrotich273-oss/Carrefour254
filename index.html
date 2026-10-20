@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Carrefour Careers | Apply & Pay</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(145deg, #f0f4fc 0%, #f8fafd 100%);
+      color: #1e2b3c;
+      line-height: 1.5;
+      padding: 1rem;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .career-container {
+      max-width: 1300px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* header */
+    .carrefour-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .logo-icon {
+      background: #0047ba;
+      color: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      font-weight: 800;
+      font-style: italic;
+      letter-spacing: -1.5px;
+      box-shadow: 0 8px 16px rgba(0, 71, 186, 0.25);
+    }
+
+    .logo-text {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: #0047ba;
+      letter-spacing: -0.8px;
+    }
+
+    .logo-text span {
+      color: #e63329;
+    }
+
+    .header-tagline {
+      margin-left: auto;
+      background: white;
+      padding: 0.55rem 1.4rem;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #1e2b3c;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e6ecf5;
+    }
+
+    .header-tagline i {
+      color: #e63329;
+      margin-right: 8px;
+    }
+
+    /* main grid */
+    .career-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* left side – job listings */
+    .jobs-section {
+      background: white;
+      border-radius: 30px;
+      padding: 1.8rem;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #edf2f9;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title i {
+      color: #0047ba;
+      background: #eef3ff;
+      padding: 10px;
+      border-radius: 16px;
+      font-size: 1.3rem;
+    }
+
+    .section-sub {
+      color: #6b7a8f;
+      font-size: 0.95rem;
+      margin-bottom: 1.8rem;
+      border-left: 4px solid #e63329;
+      padding-left: 14px;
+      font-weight: 500;
+    }
+
+    .job-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .job-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 1rem 1.2rem;
+      background: #ffffff;
+      border: 2px solid #eef2f6;
+      border-radius: 22px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .job-card:hover {
+      border-color: #b6c9e4;
+      background: #fafcff;
+      transform: translateY(-2px);
+    }
+
+    .job-card.selected {
+      border-color: #0047ba;
+      background: #f0f7ff;
+      box-shadow: 0 10px 20px -10px rgba(0, 71, 186, 0.3);
+    }
+
+    .job-icon {
+      width: 52px;
+      height: 52px;
+      background: #eef3ff;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0047ba;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .job-info {
+      flex: 1;
+    }
+
+    .job-info h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #0b1a2b;
+      margin-bottom: 5px;
+    }
+
+    .job-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.8rem;
+      color: #5f6f83;
+    }
+
+    .job-meta i {
+      margin-right: 4px;
+      color: #0047ba;
+      font-size: 0.75rem;
+    }
+
+    .job-fee-badge {
+      background: #fff1f0;
+      color: #e63329;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 8px 14px;
+      border-radius: 40px;
+      white-space: nowrap;
+      border: 1px solid #ffe0dd;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* right side – application & payment */
+    .apply-section {
+      background: white;
+      border-radius: 30px;
+      padding: 1.8rem;
+      box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #edf2f9;
+      position: sticky;
+      top: 1rem;
+    }
+
+    .apply-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .apply-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .apply-header h2 i {
+      color: #0047ba;
+    }
+
+    .secure-badge {
+      font-size: 0.7rem;
+      background: #e6f7ed;
+      color: #1e7b4c;
+      padding: 6px 12px;
+      border-radius: 40px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .selected-job-summary {
+      background: #f7faff;
+      border-radius: 22px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.8rem;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      border: 1.5px solid #dfe9f5;
+    }
+
+    .summary-icon {
+      background: white;
+      width: 46px;
+      height: 46px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #0047ba;
+      font-size: 1.3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
+
+    .summary-details {
+      flex: 1;
+    }
+
+    .summary-details .label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: #6b7a8f;
+      font-weight: 700;
+    }
+
+    .summary-details .value {
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #0b1a2b;
+    }
+
+    .summary-fee {
+      font-weight: 800;
+      color: #e63329;
+      background: white;
+      padding: 8px 14px;
+      border-radius: 30px;
+      font-size: 1rem;
+      border: 1px solid #ffdad6;
+    }
+
+    /* form */
+    .form-group {
+      margin-bottom: 1.3rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 7px;
+      color: #1e2b3c;
+    }
+
+    .form-group label i {
+      color: #e63329;
+      margin-right: 8px;
+      font-size: 0.8rem;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid #e2e8f0;
+      border-radius: 18px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      background: #ffffff;
+      outline: none;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+    }
+
+    .form-control:focus {
+      border-color: #0047ba;
+      box-shadow: 0 0 0 5px rgba(0, 71, 186, 0.12);
+    }
+
+    .payment-section {
+      background: #fafcff;
+      border-radius: 24px;
+      padding: 1.3rem;
+      margin: 1.6rem 0 1.2rem;
+      border: 1.5px solid #e1eaf5;
+    }
+
+    .payment-section h4 {
+      font-size: 0.9rem;
+      font-weight: 800;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e2b3c;
+    }
+
+    .payment-section h4 i {
+      color: #0047ba;
+      background: #eef3ff;
+      padding: 6px;
+      border-radius: 10px;
+    }
+
+    /* payment methods tabs */
+    .payment-methods {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 1.4rem;
+      flex-wrap: wrap;
+    }
+
+    .payment-method {
+      flex: 1;
+      min-width: 80px;
+      background: white;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #4a5a6e;
+    }
+
+    .payment-method i {
+      font-size: 1.5rem;
+    }
+
+    .payment-method.mpesa i { color: #00a651; }
+    .payment-method.visa i { color: #1a1f71; }
+    .payment-method.mastercard i { color: #eb001b; }
+
+    .payment-method.active {
+      border-color: #0047ba;
+      background: #f0f7ff;
+      box-shadow: 0 4px 10px rgba(0, 71, 186, 0.12);
+      color: #0047ba;
+    }
+
+    /* payment detail panels */
+    .payment-details-panel {
+      display: none;
+      margin-top: 0.5rem;
+    }
+
+    .payment-details-panel.active {
+      display: block;
+    }
+
+    .card-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .card-row .form-group {
+      flex: 1;
+      margin-bottom: 0;
+    }
+
+    .mpesa-fields .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .mpesa-fields .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .pay-btn {
+      background: #0047ba;
+      color: white;
+      border: none;
+      width: 100%;
+      padding: 1.1rem;
+      border-radius: 20px;
+      font-weight: 800;
+      font-size: 1.05rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 14px 24px -12px rgba(0, 71, 186, 0.5);
+      margin-top: 0.8rem;
+      font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+
+    .pay-btn:hover {
+      background: #003da0;
+      transform: scale(1.01);
+    }
+
+    .pay-btn:disabled {
+      background: #b6c9e4;
+      box-shadow: none;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .payment-note {
+      font-size: 0.75rem;
+      text-align: center;
+      color: #6b7a8f;
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .payment-note i {
+      color: #1e7b4c;
+    }
+
+    /* toast / feedback */
+    .toast-message {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%) translateY(120px);
+      background: #0b1a2b;
+      color: white;
+      padding: 1rem 2.2rem;
+      border-radius: 70px;
+      font-weight: 600;
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.4);
+      transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.3, 1);
+      z-index: 1000;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .toast-message.show {
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .toast-message i {
+      font-size: 1.2rem;
+      color: #5be49b;
+    }
+
+    /* responsive */
+    @media (max-width: 1000px) {
+      .career-grid {
+        grid-template-columns: 1fr;
+        gap: 1.8rem;
+      }
+      .apply-section {
+        position: static;
+      }
+      .header-tagline {
+        margin-left: 0;
+        width: 100%;
+        text-align: center;
+      }
+      .carrefour-header {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 0.8rem; }
+      .jobs-section, .apply-section { padding: 1.4rem; }
+      .job-card { flex-wrap: wrap; }
+      .job-fee-badge { margin-left: 66px; }
+      .logo-text { font-size: 1.6rem; }
+      .logo-icon { width: 40px; height: 40px; font-size: 1.5rem; }
+      .payment-methods { flex-direction: row; }
+      .payment-method { font-size: 0.7rem; padding: 8px 4px; }
+      .toast-message { white-space: normal; text-align: center; width: 90%; padding: 1rem; }
+      .card-row { flex-direction: column; gap: 10px; }
+      .card-row .form-group { margin-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="career-container">
+    <!-- Header -->
+    <header class="carrefour-header">
+      <div class="logo">
+        <div class="logo-icon">C</div>
+        <div class="logo-text">carrefour<span>.</span></div>
+      </div>
+      <div class="header-tagline">
+        <i class="fas fa-briefcase"></i> Join our team — application requires a small fee
+      </div>
+    </header>
+
+    <!-- Main grid -->
+    <div class="career-grid">
+      <!-- LEFT: Jobs list -->
+      <section class="jobs-section">
+        <div class="section-title">
+          <i class="fas fa-store"></i> Open positions
+        </div>
+        <div class="section-sub">Select a job below to apply</div>
+
+        <div class="job-list" id="jobList">
+          <!-- job 1: Cashier -->
+          <div class="job-card selected" data-job-id="1" data-job-title="Cashier" data-job-fee="4.99">
+            <div class="job-icon"><i class="fas fa-cash-register"></i></div>
+            <div class="job-info">
+              <h3>Cashier</h3>
+              <div class="job-meta">
+                <span><i class="fas fa-map-pin"></i> Nairobi, KE</span>
+                <span><i class="fas fa-clock"></i> Full-time</span>
+              </div>
+            </div>
+            <div class="job-fee-badge"><i class="fas fa-tag"></i> KES 650</div>
+          </div>
+          <!-- job 2: Stocker -->
+          <div class="job-card" data-job-id="2" data-job-title="Stocker" data-job-fee="3.99">
+            <div class="job-icon"><i class="fas fa-boxes"></i></div>
+            <div class="job-info">
+              <h3>Stocker</h3>
+              <div class="job-meta">
+                <span><i class="fas fa-map-pin"></i> Mombasa, KE</span>
+                <span><i class="fas fa-clock"></i> Full-time</span>
+              </div>
+            </div>
+            <div class="job-fee-badge"><i class="fas fa-tag"></i> KES 520</div>
+          </div>
+          <!-- job 3: Inventory Inspector -->
+          <div class="job-card" data-job-id="3" data-job-title="Inventory Inspector" data-job-fee="5.49">
+            <div class="job-icon"><i class="fas fa-clipboard-list"></i></div>
+            <div class="job-info">
+              <h3>Inventory Inspector</h3>
+              <div class="job-meta">
+                <span><i class="fas fa-map-pin"></i> Kisumu, KE</span>
+                <span><i class="fas fa-clock"></i> Full-time</span>
+              </div>
+            </div>
+            <div class="job-fee-badge"><i class="fas fa-tag"></i> KES 715</div>
+          </div>
+          <!-- job 4: Assistant Manager -->
+          <div class="job-card" data-job-id="4" data-job-title="Assistant Manager" data-job-fee="7.99">
+            <div class="job-icon"><i class="fas fa-user-tie"></i></div>
+            <div class="job-info">
+              <h3>Assistant Manager</h3>
+              <div class="job-meta">
+                <span><i class="fas fa-map-pin"></i> Nairobi, KE</span>
+                <span><i class="fas fa-clock"></i> Full-time</span>
+              </div>
+            </div>
+            <div class="job-fee-badge"><i class="fas fa-tag"></i> KES 1040</div>
+          </div>
+          <!-- job 5: Assistant HR Manager -->
+          <div class="job-card" data-job-id="5" data-job-title="Assistant HR Manager" data-job-fee="8.49">
+            <div class="job-icon"><i class="fas fa-user-group"></i></div>
+            <div class="job-info">
+              <h3>Assistant HR Manager</h3>
+              <div class="job-meta">
+                <span><i class="fas fa-map-pin"></i> Nakuru, KE</span>
+                <span><i class="fas fa-clock"></i> Full-time</span>
+              </div>
+            </div>
+            <div class="job-fee-badge"><i class="fas fa-tag"></i> KES 1100</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT: Application + payment -->
+      <section class="apply-section">
+        <div class="apply-header">
+          <h2><i class="fas fa-file-signature"></i> Apply now</h2>
+          <div class="secure-badge"><i class="fas fa-lock"></i> Secure</div>
+        </div>
+
+        <!-- selected job summary -->
+        <div class="selected-job-summary">
+          <div class="summary-icon"><i class="fas fa-briefcase"></i></div>
+          <div class="summary-details">
+            <div class="label">You are applying for</div>
+            <div class="value" id="selectedJobTitle">Cashier</div>
+          </div>
+          <div class="summary-fee" id="selectedJobFee">KES 650</div>
+        </div>
+
+        <!-- application form -->
+        <form id="applicationForm">
+          <div class="form-group">
+            <label><i class="fas fa-user"></i> Full name</label>
+            <input type="text" class="form-control" id="fullName" placeholder="e.g. John Kamau" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fas fa-phone"></i> Phone number</label>
+            <input type="tel" class="form-control" id="phone" placeholder="+254 712 345 678" required>
+          </div>
+
+          <!-- payment methods -->
+          <div class="payment-section">
+            <h4><i class="fas fa-credit-card"></i> Choose payment method</h4>
+            
+            <div class="payment-methods" id="paymentMethods">
+              <div class="payment-method mpesa active" data-method="mpesa">
+                <i class="fas fa-mobile-alt"></i> M-Pesa
+              </div>
+              <div class="payment-method visa" data-method="visa">
+                <i class="fab fa-cc-visa"></i> Visa
+              </div>
+              <div class="payment-method mastercard" data-method="mastercard">
+                <i class="fab fa-cc-mastercard"></i> Mastercard
+              </div>
+            </div>
+
+            <!-- M-Pesa details -->
+            <div class="payment-details-panel active" id="mpesaPanel">
+              <div class="mpesa-fields">
+                <div class="form-group">
+                  <label>M-Pesa phone number</label>
+                  <input type="tel" class="form-control" id="mpesaPhone" placeholder="+254 712 345 678" value="+254712345678">
+                </div>
+              </div>
+            </div>
+
+            <!-- Visa / Mastercard details -->
+            <div class="payment-details-panel" id="cardPanel">
+              <div class="form-group">
+                <label>Card number</label>
+                <input type="text" class="form-control" id="cardNumber" placeholder="4242 4242 4242 4242" value="4242 4242 4242 4242">
+              </div>
+              <div class="card-row">
+                <div class="form-group">
+                  <label>Expiry</label>
+                  <input type="text" class="form-control" id="expiry" placeholder="MM/YY" value="12/28">
+                </div>
+                <div class="form-group">
+                  <label>CVC</label>
+                  <input type="text" class="form-control" id="cvc" placeholder="123" value="123">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button type="submit" class="pay-btn" id="payAndApplyBtn">
+            <i class="fas fa-lock"></i> Pay <span id="payAmountBtn">KES 650</span> & apply
+          </button>
+          <div class="payment-note">
+            <i class="fas fa-shield-alt"></i> Your payment is secure. Application fee is non-refundable.
+          </div>
+        </form>
+      </section>
+    </div>
+  </div>
+
+  <!-- toast message -->
+  <div class="toast-message" id="toast">
+    <i class="fas fa-check-circle"></i>
+    <span id="toastText">Payment successful! Your application has been submitted.</span>
+  </div>
+
+  <script>
+    (function() {
+      /
